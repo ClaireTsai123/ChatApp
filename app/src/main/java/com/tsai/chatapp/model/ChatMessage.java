@@ -8,10 +8,10 @@ import java.util.Date;
 import java.util.TimeZone;
 
 public class ChatMessage {
-   String senderId;
-   String text;
-   long time;
-  public boolean isMine;
+    String senderId;
+    String text;
+    long time;
+    public boolean isMine;
 
     public ChatMessage() {
     }
@@ -56,11 +56,11 @@ public class ChatMessage {
     public void setMine(boolean mine) {
         isMine = mine;
     }
+
     public String convertTime() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
         Date date = new Date(getTime());
         simpleDateFormat.setTimeZone(TimeZone.getDefault());
         return simpleDateFormat.format(date);
-
     }
 }

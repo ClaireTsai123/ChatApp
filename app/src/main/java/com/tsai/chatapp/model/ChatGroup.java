@@ -1,7 +1,6 @@
 package com.tsai.chatapp.model;
 
 public class ChatGroup {
-
     private String groupName;
 
     public ChatGroup(String groupName) {

@@ -36,7 +36,7 @@ public class Repository {
     DatabaseReference groupReference;
 
     public Repository() {
-       this.chatGroupMutableLiveData = new MutableLiveData<>();
+        this.chatGroupMutableLiveData = new MutableLiveData<>();
         db = FirebaseDatabase.getInstance();
         reference = db.getReference();
 
@@ -78,12 +78,13 @@ public class Repository {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 groups.clear();//avoid the duplicate
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     ChatGroup chatGroup = new ChatGroup(dataSnapshot.getKey());
                     groups.add(chatGroup);
                 }
                 chatGroupMutableLiveData.postValue(groups);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -109,8 +110,8 @@ public class Repository {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 chatMessages.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                        ChatMessage message = dataSnapshot.getValue(ChatMessage.class);
-                        chatMessages.add(message);
+                    ChatMessage message = dataSnapshot.getValue(ChatMessage.class);
+                    chatMessages.add(message);
 
                 }
                 chatMessageMutableLiveData.postValue(chatMessages);
@@ -138,6 +139,5 @@ public class Repository {
             String randomKey = ref.push().getKey();
             ref.child(randomKey).setValue(newMsg);
         }
-
     }
 }
